@@ -43,11 +43,16 @@ app.post("/register", async (req, res) => {
                      VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
     const values = [nombre, correo, telefono, mensaje, origen];
-    const result = await sql(query, values);
 
+    const result = await sql(query, values);
     res.status(201).json(result);
   } catch (error) {
     console.error("Error inserting subscriber:", error);
+
+    if (error.code === "23505") {
+      return res.status(409).json({ error: "El correo ya está registrado" });
+    }
+
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
