@@ -31,7 +31,7 @@ const sendNotificationEmail = async (
 ) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: "jadrianlf@hotmail.com", // Cambia esto por tu correo o el destinatario
+    to: "gerosmex@hotmail.com", // Cambia esto por tu correo o el destinatario
     subject: "Nuevo Registro de Suscriptor",
     text: `¡Nuevo registro!\n\nNombre: ${nombre}\nCorreo: ${correo}\nTeléfono: ${telefono}\nMensaje: ${mensaje}\nOrigen: ${origen}`,
   };
